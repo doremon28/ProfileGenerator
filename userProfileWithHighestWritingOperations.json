@@ -1,0 +1,11 @@
+{
+  "emailProfile": "ibrahim@gmail.com",
+  "readingOperations": {
+    " getProduct method called": 0
+  },
+  "writingOperations": {
+    "updateProduct": 2,
+    "createProduct": 11
+  },
+  "productPrices": {}
+}

@@ -1,0 +1,53 @@
+[
+  {
+    "emailProfile": "allouane.hatim.ha11@gmail.com",
+    "readingOperations": {
+      " getProduct method called": 0
+    },
+    "writingOperations": {
+      "updateProduct": 3,
+      "createProduct": 7
+    },
+    "productPrices": {}
+  },
+  {
+    "emailProfile": "hamdi@gmail.com",
+    "readingOperations": {
+      " getProductById method called": 11
+    },
+    "writingOperations": {},
+    "productPrices": {
+      "6x1L eau": 3.0,
+      "Pain": 0.7,
+      "Lait": 1.7,
+      "Chocco": 12.05,
+      "Oasis": 2.07,
+      "Nutela": 5.0,
+      "Pain de mie": 2.06,
+      "Nari": 3.06
+    }
+  },
+  {
+    "emailProfile": "ibrahim@gmail.com",
+    "readingOperations": {
+      " getProduct method called": 0
+    },
+    "writingOperations": {
+      "updateProduct": 2,
+      "createProduct": 11
+    },
+    "productPrices": {}
+  },
+  {
+    "emailProfile": "karim@gmail.com",
+    "readingOperations": {
+      " getProductById method called": 3
+    },
+    "writingOperations": {},
+    "productPrices": {
+      "lenovo promo": 2200.0,
+      "Samsung s21 promo": 800.0,
+      "iphone 12": 1000.0
+    }
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "emailProfile": "hamdi@gmail.com",
+  "readingOperations": {
+    " getProductById method called": 11
+  },
+  "writingOperations": {},
+  "productPrices": {
+    "6x1L eau": 3.0,
+    "Pain": 0.7,
+    "Lait": 1.7,
+    "Chocco": 12.05,
+    "Oasis": 2.07,
+    "Nutela": 5.0,
+    "Pain de mie": 2.06,
+    "Nari": 3.06
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "emailProfile": "karim@gmail.com",
+  "readingOperations": {
+    " getProductById method called": 3
+  },
+  "writingOperations": {},
+  "productPrices": {
+    "lenovo promo": 2200.0,
+    "Samsung s21 promo": 800.0,
+    "iphone 12": 1000.0
+  }
+}
