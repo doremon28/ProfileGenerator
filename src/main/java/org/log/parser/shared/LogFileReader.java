@@ -11,24 +11,54 @@ import java.io.*;
 import java.util.*;
 
 
+/**
+ * The type Log file reader.
+ */
 public class LogFileReader {
 
+    /**
+     * The constant LOGGER.
+     */
     private static final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(LogFileReader.class);
+    /**
+     * The Log file path.
+     */
     private final String LOG_FILE_PATH;
+    /**
+     * The Log file path output.
+     */
     private final String LOG_FILE_PATH_OUTPUT;
+    /**
+     * The Log file model.
+     */
     @Getter
     private final LogFileModel logFileModel = new LogFileModel();
+    /**
+     * The Log model map.
+     */
     @Getter
     private final Map<String, List<LogModel>> logModelMap = new HashMap<>();
 
+    /**
+     * The User profiles.
+     */
     @Getter
     private final List<UserProfile> userProfiles = new ArrayList<>();
 
+    /**
+     * Instantiates a new Log file reader.
+     *
+     * @param logFilePath       the log file path
+     * @param logFilePathOutput the log file path output
+     */
     public LogFileReader(String logFilePath, String logFilePathOutput) {
         LOG_FILE_PATH = logFilePath;
         LOG_FILE_PATH_OUTPUT = logFilePathOutput;
     }
 
+    /**
+     * Read log file.
+     */
     public void readLogFile() {
         LOGGER.info("Start the reading of the log file");
         File file = new File(LOG_FILE_PATH);
@@ -66,6 +96,11 @@ public class LogFileReader {
         }
     }
 
+    /**
+     * Parse log line.
+     *
+     * @param line the line
+     */
     private void parseLogLine(String line) {
         List<String> parts = Arrays.stream(line.split("---")).toList();
         List<String> parts1 = Arrays.stream(parts.get(0).split(" ")).filter(s -> !s.isEmpty()).toList();
@@ -106,6 +141,10 @@ public class LogFileReader {
                 .build();
         logFileModel.getLogs().add(logModel);
     }
+
+    /**
+     * Build profiles.
+     */
     private void buildProfiles() {
         for(Map.Entry<String, List<LogModel>> entry : logModelMap.entrySet()) {
             UserProfile userProfile = new UserProfile();
@@ -121,6 +160,12 @@ public class LogFileReader {
         }
     }
 
+    /**
+     * Filter product prices map.
+     *
+     * @param value the value
+     * @return the map
+     */
     private Map<String, Double> filterProductPrices(List<LogModel> value) {
         Map<String, Double> productPrices = new HashMap<>();
         for (LogModel logModel : value) {
@@ -134,6 +179,12 @@ public class LogFileReader {
         return productPrices;
     }
 
+    /**
+     * Filter writing logs map.
+     *
+     * @param values the values
+     * @return the map
+     */
     private Map<String, Integer> filterWritingLogs(List<LogModel> values) {
         Map<String, Integer> writingOperation = new HashMap<>();
         for (LogModel logModel : values) {
@@ -148,6 +199,12 @@ public class LogFileReader {
         return writingOperation;
     }
 
+    /**
+     * Filter reading logs map . entry.
+     *
+     * @param logs the logs
+     * @return the map . entry
+     */
     private Map.Entry<String, Integer> filterReadingLogs(List<LogModel> logs) {
         Map.Entry<String, Integer> entry = null;
         List<String> list = new ArrayList<>();
@@ -165,6 +222,10 @@ public class LogFileReader {
 
         return entry;
     }
+
+    /**
+     * Write profiles map.
+     */
     private void writeProfilesMap() {
         logFileModel.getLogs()
                 .stream()
@@ -176,30 +237,53 @@ public class LogFileReader {
 
     }
 
+    /**
+     * Print for loop.
+     *
+     * @param parts the parts
+     */
     private void printForLoop(String[] parts) {
         for (int i = 0; i < parts.length; i++) {
             System.out.println("parts"+0+"[" + i + "] = " + parts[i]);
         }
     }
 
+    /**
+     * Gets highest reading operations.
+     *
+     * @return the highest reading operations
+     */
     public UserProfile getHighestReadingOperations() {
         return userProfiles.stream()
                 .max(Comparator.comparingInt(userProfile -> userProfile.getReadingOperations() != null ? userProfile.getReadingOperations().getValue() : 0))
                 .orElse(null);
     }
 
+    /**
+     * Gets highest writing operations.
+     *
+     * @return the highest writing operations
+     */
     public UserProfile getHighestWritingOperations() {
         return userProfiles.stream()
                 .max(Comparator.comparingInt(userProfile -> userProfile.getWritingOperations().values().stream().mapToInt(Integer::intValue).sum()))
                 .orElse(null);
     }
 
+    /**
+     * Gets highest product prices.
+     *
+     * @return the highest product prices
+     */
     public UserProfile getHighestProductPrices() {
         return userProfiles.stream()
                 .max(Comparator.comparingDouble(userProfile -> userProfile.getProductPrices().values().stream().mapToDouble(Double::doubleValue).sum()))
                 .orElse(null);
     }
 
+    /**
+     * Write json file user profile.
+     */
     public void writeJsonFileUserProfile() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();

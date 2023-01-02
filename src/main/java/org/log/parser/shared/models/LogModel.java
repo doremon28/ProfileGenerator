@@ -17,7 +17,4 @@ public class LogModel {
     private String thread;
     private String pathClass;
     private String message;
-
-
-
 }

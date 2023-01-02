@@ -6,11 +6,28 @@ import org.log.parser.shared.constants.OptionsCli;
 import org.log.parser.shared.utils.ConfigOptionsParam;
 import org.slf4j.Logger;
 
+/**
+ * The type Main.
+ */
 public class Main {
+    /**
+     * The constant LOGGER.
+     */
     private static final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(Main.class);
+    /**
+     * The constant sourceLogProfile.
+     */
     private static String sourceLogProfile;
+    /**
+     * The constant outputFileLogProfile.
+     */
     private static String outputFileLogProfile;
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         LOGGER.info("Start the program");
         configurationCli(args);
@@ -22,6 +39,11 @@ public class Main {
         LOGGER.info("End the program size {}", logFileReader.getLogFileModel().getLogs().size());
     }
 
+    /**
+     * Configuration cli.
+     *
+     * @param args the args
+     */
     private static void configurationCli(String[] args) {
         LOGGER.info("Start the configuration of the CLI");
         ConfigOptionsParam configOptionsParam = new ConfigOptionsParam();
